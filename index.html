@@ -2,37 +2,60 @@
 <html lang="pt-BR">
 
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Melhora a compatibilidade com o IE -->
     <meta name="theme-color" content="#bb13a640"> <!-- Altera a cor da barra de endereços do navegador no celular -->
     <meta name="description" content="Um aplicativo de clima simples"> <!-- Descrição do site para motores de busca -->
+
+    <!-- Favicon e estilos -->
     <link rel="shortcut icon" href="clima.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
     <title>Clima App</title>
 </head>
-
 
 <body>
 
     <div class="container">
-        <input type="text" id="entradaCidade" placeholder="Digite o nome da cidade">
-        <button onclick="getWeather()"><i class="fas fa-search"></i></button>
-        <p id="mensagemErro"></p> <!-- Moved outside of weatherCard -->
         <div id="cartaoClima" class="card">
-            <h2 id="nomeCidade"></h2>
+            <!-- Barra de Pesquisa -->
+            <div id="barraPesquisa" class="barra-pesquisa">
+                <!-- Rótulo para a entrada de cidade -->
+                <label for="entradaCidade"></label>
+                <!-- Campo de entrada de texto para o nome da cidade -->
+                <input type="text" id="entradaCidade" aria-label="Nome da cidade" placeholder="Digite o nome da cidade">
+                <!-- Botão de pesquisa do clima -->
+                <button onclick="getWeather()" aria-label="Pesquisar"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Informações do Clima -->
+            <!-- Título da cidade -->
+            <h2 id="nomeCidade" aria-live="polite"></h2>
+            <!-- Informações de temperatura -->
             <p id="temperatura"></p>
             <p id="temperaturaMinima"></p>
             <p id="temperaturaMaxima"></p>
+            <!-- Descrição do clima -->
             <p id="textoClima"></p>
+            <!-- Umidade e vento -->
             <p id="umidade"></p>
             <p id="vento"></p>
-            <p id="informacoesAdicionais"></p> <!-- New element for additional information -->
+            <!-- Informações adicionais (novo elemento) -->
+            <p id="informacoesAdicionais"></p>
+
+            <!-- Mensagens de Erro e Carregamento -->
+            <!-- Mensagem de erro (movida para dentro de weatherCard) -->
+            <p id="mensagemErro" aria-live="assertive"></p>
+            <!-- Mensagem de carregamento (movida para dentro de weatherCard) -->
+            <p id="mensagemCarregamento" style="display: none;" aria-live="assertive">Carregando...</p>
         </div>
-        <p id="mensagemCarregamento" style="display: none;">Carregando...</p>
     </div>
 
+    <!-- Script -->
+    <!-- Inclusão do script JavaScript -->
     <script src="script.js"></script>
 </body>
 
